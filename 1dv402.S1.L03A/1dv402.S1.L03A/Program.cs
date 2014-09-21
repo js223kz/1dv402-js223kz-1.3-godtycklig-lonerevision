@@ -145,7 +145,7 @@ namespace dv402.S1.L03A
 		{
 			Console.BackgroundColor = ConsoleColor.Green;
 			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine ("\nTryck valfri tangent för starta om - Esc avslutar");
+			Console.WriteLine ("\nTryck tangent för ny beräkning - Esc avslutar");
 				
 			if (Console.ReadKey(true).Key != ConsoleKey.Escape)
 				{
@@ -156,7 +156,6 @@ namespace dv402.S1.L03A
 				return;
 				}
 		}
-			
 	}
 }
   
