@@ -1,0 +1,5 @@
+/Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/bin/Debug/1dv402.S1.L03A.exe.mdb
+/Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/bin/Debug/1dv402.S1.L03A.exe
+/Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/1dv402.S1.L03A.exe
+/Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/1dv402.S1.L03A.exe.mdb
