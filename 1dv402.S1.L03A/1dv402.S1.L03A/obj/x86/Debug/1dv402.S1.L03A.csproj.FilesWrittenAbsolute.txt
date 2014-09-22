@@ -3,3 +3,8 @@
 /Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/bin/Debug/1dv402.S1.L03A.exe
 /Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/1dv402.S1.L03A.exe
 /Users/mkt/Projects/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/1dv402.S1.L03A.exe.mdb
+/Users/mkt/Documents/C#_projekt/1dv402-js223kz-1.3-godtycklig-lonerevision/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/mkt/Documents/C#_projekt/1dv402-js223kz-1.3-godtycklig-lonerevision/1dv402.S1.L03A/1dv402.S1.L03A/bin/Debug/1dv402.S1.L03A.exe.mdb
+/Users/mkt/Documents/C#_projekt/1dv402-js223kz-1.3-godtycklig-lonerevision/1dv402.S1.L03A/1dv402.S1.L03A/bin/Debug/1dv402.S1.L03A.exe
+/Users/mkt/Documents/C#_projekt/1dv402-js223kz-1.3-godtycklig-lonerevision/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/1dv402.S1.L03A.exe
+/Users/mkt/Documents/C#_projekt/1dv402-js223kz-1.3-godtycklig-lonerevision/1dv402.S1.L03A/1dv402.S1.L03A/obj/x86/Debug/1dv402.S1.L03A.exe.mdb

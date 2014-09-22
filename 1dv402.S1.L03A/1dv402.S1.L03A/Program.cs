@@ -122,21 +122,18 @@ namespace dv402.S1.L03A
 
 
 			//Loop through array and display input salaries in three columns
-			int row = 0;
-
-				for (row = 0; row < salaries.Length; row++) {
-					if (row % 3 == 2) 
-					{
-						Console.WriteLine("{0, 10}", salaries[row]);
-					}
-					
-					else 
-					{
-						Console.Write("{0, 10}", salaries[row]);
-					}
+			foreach (int item in salaries){
+				if (item % 3 == 2) 
+				{
+					Console.WriteLine ("{0, 10}", item);
+				} 
+				else 
+				{
+					Console.Write("{0, 10}", item);
 				}
+			}
 
-
+	
 			//Gives user option to close program or start over
 			restartCalculation (numberOfSalaries);
 		}
