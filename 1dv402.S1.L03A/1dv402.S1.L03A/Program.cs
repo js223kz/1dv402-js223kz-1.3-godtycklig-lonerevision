@@ -10,13 +10,12 @@ namespace dv402.S1.L03A
 		{
 
 			int numberOfsalaries=0;
-
-			readInt("Ange antal löner att mata in: ", numberOfsalaries);
-
-
+			ReadInt("Ange antal löner att mata in: ", numberOfsalaries);
 		}
+
+
 		//method that returns user input, number of salaries, and handles input misstakes
-		static int readInt(string prompt, int numberOfsalaries)
+		static int ReadInt(string prompt, int numberOfsalaries)
 		{
 			while (true) 
 			{
@@ -35,7 +34,7 @@ namespace dv402.S1.L03A
 							Console.ResetColor ();
 
 							//Gives user option to close program or start over	
-							restartCalculation(numberOfsalaries);
+							RestartCalculation(numberOfsalaries);
 						}
 				
 					int count=0;
@@ -54,11 +53,12 @@ namespace dv402.S1.L03A
 							Console.ResetColor ();
 
 							//Gives user option to close program or start over
-							restartCalculation(numberOfsalaries);
+							RestartCalculation(numberOfsalaries);
 						}
 					}
-
-				processSalaries(numberOfsalaries, salaries);
+				
+				//Start processing salary values
+				ProcessSalaries(numberOfsalaries, salaries);
 				return numberOfsalaries;
 				}
 
@@ -81,7 +81,7 @@ namespace dv402.S1.L03A
 
 
 		//Method that processes entered values, makes calculations and displays those calculations
-		static void processSalaries(int numberOfSalaries, int[] salaries){
+		static void ProcessSalaries(int numberOfSalaries, int[] salaries){
 
 			//Calculate average salary
 			double salaryAverage;
@@ -133,12 +133,11 @@ namespace dv402.S1.L03A
 				}
 			}
 
-	
 			//Gives user option to close program or start over
-			restartCalculation (numberOfSalaries);
+			RestartCalculation (numberOfSalaries);
 		}
 
-		static void restartCalculation(int numberOfSalaries)
+		static void RestartCalculation(int numberOfSalaries)
 		{
 			Console.BackgroundColor = ConsoleColor.Green;
 			Console.ForegroundColor = ConsoleColor.White;
@@ -146,7 +145,7 @@ namespace dv402.S1.L03A
 				
 			if (Console.ReadKey(true).Key != ConsoleKey.Escape)
 				{
-				readInt ("Ange antal löner att mata in: ", numberOfSalaries);
+				ReadInt ("Ange antal löner att mata in: ", numberOfSalaries);
 				}
 				else
 				{
