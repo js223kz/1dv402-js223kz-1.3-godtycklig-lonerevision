@@ -9,79 +9,133 @@ namespace dv402.S1.L03A
 
 		{
 
-			int numberOfsalaries=0;
+			uint numberOfsalaries=0;
+
+			//runs method that returns number of salaries to process
 			ReadInt("Ange antal löner att mata in: ", numberOfsalaries);
+
 		}
 
 
-		//method that returns user input, number of salaries, and handles input misstakes
-		static int ReadInt(string prompt, int numberOfsalaries)
+		//method that returns number of salaries, and handles input errors
+		static uint ReadInt(string prompt, uint numberOfsalaries)
 		{
+			int[] salaries = new int[numberOfsalaries];
+			int count=0;
+
 			while (true) 
 			{
 				try 
 				{
 					Console.Write (prompt);
-					numberOfsalaries = int.Parse (Console.ReadLine ());
-					int[] salaries = new int[numberOfsalaries];
+					numberOfsalaries = uint.Parse (Console.ReadLine ());
+					salaries = new int[numberOfsalaries];
 
-						if(numberOfsalaries < 2)
-						{
-							Console.BackgroundColor = ConsoleColor.Red;
-							Console.ForegroundColor = ConsoleColor.White;
-							Console.WriteLine ("För att kunna göra en beräkning måste antalet löner vara minst 2");
-
-							Console.ResetColor ();
-
-							//Gives user option to close program or start over	
-							RestartCalculation(numberOfsalaries);
-						}
-				
-					int count=0;
-
-					//asks for the right number of salary values user input wants and puts them in an array
-					for (count = 0; count < salaries.Length; count++) 
+					if (numberOfsalaries < 2) 
 					{
-						Console.Write ("Mata in lön {0}: ", count+1);
-						salaries[count] = Convert.ToInt32(Console.ReadLine());
-
-						if(salaries[count] < 1) 
-						{
-							Console.BackgroundColor = ConsoleColor.Red;
-							Console.ForegroundColor = ConsoleColor.White;
-							Console.WriteLine ("Inmatad lön kan inte vara 0 kr eller mindre");
-							Console.ResetColor ();
-
-							//Gives user option to close program or start over
-							RestartCalculation(numberOfsalaries);
-						}
+						throw new ArgumentException ();
 					}
-				
-				//Start processing salary values
-				ProcessSalaries(numberOfsalaries, salaries);
-				return numberOfsalaries;
-				}
 
-				catch (FormatException)
+				} 
+				catch (ArgumentException) 
 				{
 					Console.BackgroundColor = ConsoleColor.Red;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine ("Antalet löner ska vara ett heltal och enbart skrivas med siffror");
+					Console.WriteLine ("För att kunna göra en beräkning måste antalet löner vara minst 2");
+
+					Console.BackgroundColor = ConsoleColor.Green;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine ("\nTryck tangent för ny beräkning - Esc avslutar");
 					Console.ResetColor ();
 
-				}
-				catch (Exception) {//fattar inte varför negativa tal inte fastnar i if satsen ovan
+					if (Console.ReadKey (true).Key != ConsoleKey.Escape) 
+					{
+						ReadInt ("Ange antal löner att mata in: ", numberOfsalaries);
+					} 
+					else 
+					{
+						return (0);
+					}
+				} 
+				catch (OverflowException) 
+				{
 					Console.BackgroundColor = ConsoleColor.Red;
 					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine ("Antalet löner kan inte vara negativt!");
+					Console.WriteLine ("FEL! Kan inte tolkas som en giltig summa");
 					Console.ResetColor ();
+				} 
+				catch (FormatException) 
+				{
+					Console.BackgroundColor = ConsoleColor.Red;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine ("FEL! Kan inte tolkas som en giltig summa");
+					Console.ResetColor ();
+
+				} catch (Exception) 
+				{
+					Console.BackgroundColor = ConsoleColor.Red;
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine ("Okänt fel!");
+					Console.ResetColor ();
+				}
+			
+
+				while (true) 
+				{
+					try 
+					{
+						
+						for (count = 0; count < salaries.Length; count++) 
+						{
+							Console.Write ("Mata in lön {0}: ", count + 1);
+							salaries [count] = int.Parse (Console.ReadLine ());
+
+							if (salaries [count] < 1) 
+							{
+								throw new ArgumentException ();
+							}
+						}
+						//start processing values 
+						ProcessSalaries (numberOfsalaries, salaries);
+						return numberOfsalaries;
+
+					} 
+					catch (ArgumentException) 
+					{
+						Console.BackgroundColor = ConsoleColor.Red;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine ("Lönen måste vara ett tal större än 0");
+						Console.ResetColor ();
+					} 
+					catch (OverflowException) 
+					{
+						Console.BackgroundColor = ConsoleColor.Red;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine ("FEL! Kan inte tolkas som en giltig summa");
+						Console.ResetColor ();
+					} 
+					catch (FormatException) 
+					{
+						Console.BackgroundColor = ConsoleColor.Red;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine ("FEL! Kan inte tolkas som en giltig summa");
+						Console.ResetColor ();
+
+					} 
+					catch (Exception) 
+					{
+						Console.BackgroundColor = ConsoleColor.Red;
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.WriteLine ("Okänt fel!");
+						Console.ResetColor ();
+					}
 				}
 			}
 		}
 
 
 		//Method that processes entered values, makes calculations and displays those calculations
-		static void ProcessSalaries(int numberOfSalaries, int[] salaries){
+		static void ProcessSalaries(uint numberOfSalaries, int[] salaries){
 
 			//Calculate average salary
 			double salaryAverage;
@@ -96,19 +150,19 @@ namespace dv402.S1.L03A
 			salaryDifference = copyOfArray.Last() - copyOfArray[0];
 
 			//Calculate median salary
-			decimal salaryMedian=0;
+			double salaryMedian=0;
 			int size = copyOfArray.Length;
 			int middle = size / 2;
 
 			//handle if array lenght is even or uneven
 			if(size % 2!= 0)
 			{
-				salaryMedian = (decimal)copyOfArray[middle];
+				salaryMedian = (double)copyOfArray[middle];
 				Convert.ToInt32(Math.Round(salaryMedian));
 			}
 			else
 			{
-				salaryMedian = ((decimal)copyOfArray[middle] + (decimal)copyOfArray[middle - 1]) / 2;
+				salaryMedian = ((double)copyOfArray[middle] + (double)copyOfArray[middle - 1]) / 2;
 				Convert.ToInt32(Math.Round(salaryMedian));
 			}
 
@@ -120,38 +174,34 @@ namespace dv402.S1.L03A
 			Console.WriteLine ("{0,-16}{1,15:c0}", "Lönespridning:", salaryDifference);
 			Console.WriteLine ("------------------------------------");
 
+			int count = 0;
 
 			//Loop through array and display input salaries in three columns
-			foreach (int item in salaries){
-				if (item % 3 == 2) 
+			for (count=0; count < salaries.Length; count++){
+				if (count % 3 == 2) 
 				{
-					Console.WriteLine ("{0, 10}", item);
+					Console.WriteLine ("{0, 10}", salaries[count]);
 				} 
 				else 
 				{
-					Console.Write("{0, 10}", item);
+					Console.Write("{0, 10}", salaries[count]);
 				}
 			}
 
 			//Gives user option to close program or start over
-			RestartCalculation (numberOfSalaries);
-		}
-
-		static void RestartCalculation(int numberOfSalaries)
-		{
 			Console.BackgroundColor = ConsoleColor.Green;
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine ("\nTryck tangent för ny beräkning - Esc avslutar");
-				
+			Console.ResetColor ();
+
 			if (Console.ReadKey(true).Key != ConsoleKey.Escape)
-				{
+			{
 				ReadInt ("Ange antal löner att mata in: ", numberOfSalaries);
-				}
-				else
-				{
+			}
+			else
+			{
 				return;
-				}
+			}
 		}
 	}
 }
-  
